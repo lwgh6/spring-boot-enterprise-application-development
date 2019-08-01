@@ -5,6 +5,8 @@ package com.waylau.spring.boot.blog.controller;
 
 import java.util.List;
 
+import com.sun.org.apache.xpath.internal.operations.And;
+import javafx.beans.binding.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,10 +28,10 @@ import com.waylau.spring.boot.blog.repository.es.EsBlogRepository;
 @RestController
 @RequestMapping("/blogs")
 public class BlogController {
-	
 	@Autowired
     private EsBlogRepository esBlogRepository;
-	
+//	http://localhost:8080/blogs?title=When&summary=When&content=And
+//	http://localhost:8080/blogs
 	@GetMapping
 	public List<EsBlog> list(@RequestParam(value="title",required=false,defaultValue="") String title,
 			@RequestParam(value="summary",required=false,defaultValue="") String summary,

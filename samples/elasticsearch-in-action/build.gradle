@@ -8,6 +8,7 @@ buildscript { // buildscript 代码块中脚本优先执行
 	// 使用了 Maven 的中央仓库（也可以指定其他仓库）
 	repositories {
 		//mavenCentral()
+		mavenLocal()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
 		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
@@ -23,7 +24,7 @@ buildscript { // buildscript 代码块中脚本优先执行
 
 // 使用插件
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -36,6 +37,7 @@ sourceCompatibility = 1.8
 // 使用了 Maven 的中央仓库（也可以指定其他仓库）
 repositories {
 	//mavenCentral()
+	mavenLocal()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
@@ -49,7 +51,8 @@ dependencies {
 
 	// 添加 Spring Data Elasticsearch 的依赖
 	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
-
+	// 添加 JNA 的依赖
+	compile('net.java.dev.jna:jna:4.3.0')
 	// 该依赖用于测试阶段
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
